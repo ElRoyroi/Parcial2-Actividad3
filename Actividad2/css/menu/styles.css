@@ -1,0 +1,112 @@
+/* Estilos generales del sidebar */
+#sidebar-menu {
+    position: fixed;
+    top: 102px; /* Cambia este valor según la altura de tu navbar */
+    left: -300px; /* Fuera de la pantalla */
+    width: 300px; /* Ancho actualizado del menú */
+    height: calc(100% - 60px); /* Altura total menos la altura de la navbar */
+    background-color: #99cfb2; /* Color de fondo */
+    padding: 20px;
+    border-top-right-radius: 50px; /* Bordes redondeados en la esquina superior derecha */
+    transition: left 0.3s ease; /* Animación de deslizamiento */
+    z-index: 1000;
+}
+
+#sidebar-menu.active {
+    left: 0; /* Cuando está activo, se muestra en pantalla */
+}
+
+#sidebar-menu .profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#sidebar-menu .profile-section img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+#sidebar-menu .profile-section h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#sidebar-menu .profile-section p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Línea divisoria entre perfil y opciones del menú */
+.profile-divider {
+    height: 1px; /* Altura de la línea */
+    background-color: #000000; /* Color de la línea más oscuro */
+    margin: 20px -20; /* Espacio alrededor de la línea */
+}
+
+/* Estilos de las opciones del menú */
+#sidebar-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar-menu ul li {
+    margin: 20px 0;
+}
+
+#sidebar-menu ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+#sidebar-menu ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar-menu ul li a:hover {
+    color: #54ab8a; /* Color al pasar el mouse */
+}
+
+/* Estilos del botón de cerrar sesión */
+#sidebar-menu .logout-btn {
+    display: block;
+    width: 100%;
+    padding: 8px 0; /* Ajusta el padding para hacerlo más delgado */
+    background-color: #54ab8a; /* Color de fondo del botón */
+    color: white;
+    text-align: center;
+    margin-top: 90px; /* Ajusta para mover el botón más abajo */
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#sidebar-menu .logout-btn:hover {
+    background-color: #3c755f; /* Color de hover para el botón */
+}
+
+/* Espaciado del contenido principal para que no sea cubierto por el menú */
+/* Estilos para el contenedor de productos */
+.contenedor {
+    transition: margin-left 0.3s ease; /* Agrega una transición suave */
+}
+
+/* Cuando el menú lateral está activo, mueve el contenedor de productos */
+body.menu-active .contenedor {
+    margin-left: 300px; /* Desplaza el contenedor hacia la derecha */
+}
+/* Estilo para el contenedor de productos */
+.product-container {
+    width: 100%; /* Asegúrate de que el contenedor use el 100% de ancho */
+    height: auto; /* Ajusta según sea necesario */
+    transition: transform 0.3s ease; /* Para suavizar la animación */
+}
+
+/* Cuando el menú está abierto */
+.sidebar-open .product-container {
+    transform: translateX(300px); /* Cambia 300px al ancho del menú lateral */
+}

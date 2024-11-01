@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Titillium+Web:wght@200;300;400;600;700&display=swap');
+
+/* Estilos Generales */
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo de la barra de navegación */
+.bg-custom {
+    background-color: #54ab8a;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* Barra de Navegación */
+.navbar {
+    height: 70px;
+    padding: 0;
+}
+
+/* Contenedor del Logo */
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-35%);
+}
+
+.logo-icon {
+    width: 80px;
+    max-height: 80px;
+    height: auto;
+}
+
+/* Barra de Búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+}
+
+.search-bar input {
+    border-radius: 10px;
+    padding: 10px;
+    width: calc(100% - 50px);
+    border: none;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar button {
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    transition: transform 0.2s ease;
+}
+
+.search-bar button i {
+    color: #54ab8a;
+    font-size: 18px;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
+}
+
+/* Iconos del Carrito y Usuario */
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons i {
+    color: black;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+#cart-count {
+    font-size: 0.8rem;
+    padding: 0.3em 0.2em;
+    border-radius: 50%;
+    background-color: #ff3d00;
+    color: white;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    min-width: 21px;
+    height: 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+#cart-count:hover {
+    background-color: #e63900;
+}
+
+/* Header */
+header {
+    background: url(img/header.jpg) center/cover no-repeat;
+    height: 300px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 35px;
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+/* Sección contenedor de items */
+.contenedor-items {
+    margin: 32px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajusta automáticamente el número de columnas */
+    gap: 42px;
+    width: 89%;
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Estilos de los items */
+.contenedor-items .item {
+    background-color: #CCE4DA;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    min-height: 350px;
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor-items .item img {
+    width: 100%;
+}
+
+.contenedor-items .item:hover {
+    box-shadow: 0 0 10px #ffffff;
+    transform: scale(1.05);
+}
+
+.contenedor-items .item .titulo-item {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contenedor-items .item .precio-item {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+/* Botón agregar al carrito */
+.boton-item {
+    border: none;
+    background-color: #54ab8a;
+    color: #fff;
+    padding: 8px 10px; /* Ajusta el padding si es necesario */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 17px; /* Tamaño de la fuente */
+    width: 180px; /* Ajusta el ancho del botón aquí */
+    margin: 0 auto; /* Centra el botón si está en un contenedor */
+}
+
+.boton-item:hover {
+    background-color: #469775;
+    transform: scale(1.05);
+}
+
+/* Animación para mostrar y ocultar productos */
+.item {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.item.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Mejora en la transición */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sección responsive */
+@media screen and (max-width: 850px) {
+    .contenedor-items {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Se reorganiza para pantallas pequeñas */
+        width: 100% !important;
+    }
+}
+
+/* Ajustes para reorganizar productos cuando el carrito esté abierto */
+body.cart-open .contenedor-items {
+    transform: translateX(-355px); /* Ajusta según el ancho del carrito */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Mantiene la reorganización automática */
+}
+
+/* Ajuste de columnas en pantallas grandes */
+@media screen and (min-width: 1200px) {
+    .contenedor-items {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 900px) {
+    .contenedor-items {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+    }
+}
+
+@media screen and (max-width: 899px) and (min-width: 600px) {
+    .contenedor-items {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas más pequeñas */
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .contenedor-items {
+        grid-template-columns: 1fr; /* 1 columna en pantallas móviles */
+    }
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #54ab8a; /* Puedes ajustar el color a tu paleta */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.notification.fade-out {
+    opacity: 0;
+}
